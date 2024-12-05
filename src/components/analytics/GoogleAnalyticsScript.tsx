@@ -1,8 +1,17 @@
 "use client";
 
 import Script from "next/script";
+import React from 'react';
 
 const googleAnalyticsId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID!;
+
+// Define types for window and gtag
+declare global {
+  interface Window {
+    dataLayer: unknown[];
+    gtag: (...args: unknown[]) => void;
+  }
+}
 
 export function GoogleAnalyticsScript() {
   return (
@@ -14,14 +23,12 @@ export function GoogleAnalyticsScript() {
           return;
         }
 
-        (window as any).dataLayer = (window as any).dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-          (window as any).dataLayer.push(arguments);
+        function gtag(...args: unknown[]) {
+          window.dataLayer.push(args);
         }
-        // @ts-expect-error gtag is only improted in the browser
         gtag("js", new Date());
-        // @ts-expect-error gtag is only improted in the browser
         gtag("config", googleAnalyticsId);
       }}
     />
@@ -30,11 +37,11 @@ export function GoogleAnalyticsScript() {
 
 export function useGoogleAnalytics() {
   const trackEvent = (event: string, data?: Record<string, unknown>) => {
-    if (typeof window === "undefined" || !(window as any).gta) {
+    if (typeof window === "undefined" || !window.gtag) {
       return;
     }
 
-    (window as any).gta("event", event, data);
+    window.gtag("event", event, data);
   };
 
   return {

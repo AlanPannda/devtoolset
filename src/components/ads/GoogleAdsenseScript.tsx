@@ -1,5 +1,6 @@
 "use client";
 
+import React from 'react';
 import Script from 'next/script'
 
 const googleAdsenseId = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ID!;
