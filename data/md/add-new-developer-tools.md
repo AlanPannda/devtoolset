@@ -1,7 +1,8 @@
 ---
-title: Add New Developer Tools To DevToolset
+title: Add New D
 description: How to add new developer tools to DevToolset
 date: '2024-08-14T13:14:40.737Z'
+lastModified: '2024-12-13T02:22:02.978Z'
 ---
 
 # Adding New Developer Tools to DevToolset
