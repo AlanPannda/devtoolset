@@ -1,7 +1,8 @@
 ---
-title: Add New Locale Support
+title: this is new post
 description: How to add new locale support to DevToolset
 date: '2024-08-14T23:14:40.737Z'
+lastModified: '2024-12-18T03:06:41.214Z'
 ---
 
 # Adding New Locale Support to DevToolset
